@@ -1,0 +1,38 @@
+.message-item {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.self {
+    background-color: #dcf8c6; /* Light green for self messages */
+    align-self: flex-end;
+}
+
+.other {
+    background-color: #e5e5ea; /* Light grey for other messages */
+}
+
+.message-content {
+    font-size: 16px;
+}
+
+.message-meta {
+    font-size: 12px;
+    color: #777;
+}
+#chat-messages {
+    min-height: 300px;
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+#recipient-select {
+    min-width: 135px;
+    border-radius: 10px;
+}
+#chat-container {
+    padding: 50px;
+}
+#message-input {
+    border-radius: 10px;
+}
