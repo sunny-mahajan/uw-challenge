@@ -56,13 +56,4 @@ class MessageRepository
             ->orderBy('created_at', 'asc')
             ->get();
     }
-    public function markMessagesExpire()
-    {
-        Message::where('recipient_read', 0)
-            ->where('created_at', '<', date("Y-m-d H:i:s", strtotime("+1 minute"))) // it checks for 1 minute
-            ->where('created_at', '<', date("Y-m-d H:i:s", strtotime("+24 hours"))) // it checks for 24 hours
-            ->update([
-                'expire_at' => date("Y-m-d H:i:s", time())
-            ]);
-    }
 }

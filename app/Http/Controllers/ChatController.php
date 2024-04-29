@@ -63,8 +63,4 @@ class ChatController extends Controller
 
         return response()->json(['messages' => $messages]);
     }
-    public function markMessagesExpire()
-    {
-        $this->messageRepo->markMessagesExpire();
-    }
 }

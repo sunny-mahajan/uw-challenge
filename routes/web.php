@@ -26,7 +26,6 @@ Route::get('/chat', [ChatController::class, 'showChat'])->name('chat')->middlewa
 Route::post('/send-message/{recipient}', [ChatController::class, 'sendMessage'])->middleware(['auth']);
 Route::get('/get-messages/{recipient}', [ChatController::class, 'getMessages'])->middleware(['auth']);
 Route::get('/fetch-messages', [ChatController::class, 'fetchMessages'])->middleware(['auth']);
-Route::get('/mark-messages-expire', [ChatController::class, 'markMessagesExpire']);
 
 
 require __DIR__ . '/auth.php';

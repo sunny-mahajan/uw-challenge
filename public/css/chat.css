@@ -36,3 +36,6 @@
 #message-input {
     border-radius: 10px;
 }
+.auto-delete-warning {
+    color: #e2b500;
+}

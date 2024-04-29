@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('mark:messagesExpire')->everyMinute(); // expire messages after a day
+        $schedule->command('mark:messagesExpire')->daily(); // expire messages after a day
     }
 
     /**
