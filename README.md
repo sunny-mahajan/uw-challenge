@@ -74,9 +74,10 @@ Follow these steps to set up the project:
     - Scheduler can be set using `php artisan schedule:run` command to auto delete unread messages after 24 hours.
     - To manually mark the unread messages as expired, command `php artisan mark:messagesExpire` can be used.
 
-2. **Register and Login:**
+2. **Run seeders to generate users:**
 
-    - Register a new user account.
+    - `php artisan db:seed --class=UserSeeder`.
+    - You can log in as any user from the seeders to access the app.
 
 3. **Start Chatting:**
     - Select a user from the dropdown to start chatting.
