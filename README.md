@@ -76,7 +76,8 @@ Follow these steps to set up the project:
 
 2. **Run seeders to generate users:**
 
-    - `php artisan db:seed --class=UserSeeder`.
+    - `php artisan db:seed --class=UserSeeder` will create users with the usernames "john@example.com," "jane@example.com," "alice@example.com," and "bob@example.com."
+    - The password for all users is "12345678"
     - You can log in as any user from the seeders to access the app.
 
 3. **Start Chatting:**
