@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
 
 Route::middleware('guest')->group(function () {
-    Route::get('/', [RegisteredUserController::class, 'create'])
-        ->name('register');
-        
+    Route::get('/', [AuthenticatedSessionController::class, 'create'])
+        ->name('login');
+
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 

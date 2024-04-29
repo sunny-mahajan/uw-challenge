@@ -3,14 +3,13 @@
     padding: 8px;
     border-radius: 8px;
 }
+.message-item.deleted {
+    background-color: #d8d8d8;
+}
 
 .self {
     background-color: #dcf8c6; /* Light green for self messages */
     align-self: flex-end;
-}
-
-.other {
-    background-color: #e5e5ea; /* Light grey for other messages */
 }
 
 .message-content {

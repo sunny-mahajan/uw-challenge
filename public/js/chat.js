@@ -46,9 +46,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Loop through fetched messages and display them in the chat interface
                     data.messages.forEach((message) => {
                         const messageElement = document.createElement("div");
+
+                        const msgDeletedClass =
+                            message.recipient_read == 1 ||
+                            message.expire_at != null
+                                ? "deleted"
+                                : "available";
+
                         messageElement.classList.add(
                             "message-item",
-                            message.sender_id === recipientId ? "other" : "self"
+                            msgDeletedClass,
+                            "self"
                         );
                         messageElement.innerHTML = `
                             <div class="message-content">${message.message}</div>

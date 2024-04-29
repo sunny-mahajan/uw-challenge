@@ -45,7 +45,9 @@ Follow these steps to set up the project:
     - Run the following command to install project dependencies:
         ```
         composer install
-        npm install && npm run dev
+        npm install
+        npm run dev
+        
         ```
 
 6. **Generate Application Key:**
@@ -62,6 +64,13 @@ Follow these steps to set up the project:
         php artisan migrate
         ```
 
+8. **Run Seeders:**
+
+    - Run seeders to create testing users.
+        ```
+        php artisan db:seed --class=UserSeeder
+        ```
+
 ## Usage
 
 1. **Serve the Application:**
@@ -76,7 +85,7 @@ Follow these steps to set up the project:
 
 2. **Run seeders to generate users:**
 
-    - `php artisan db:seed --class=UserSeeder` will create users with the usernames "john@example.com," "jane@example.com," "alice@example.com," and "bob@example.com."
+    - Login any of the testing users from: "john@example.com", "jane@example.com", "alice@example.com", and "bob@example.com".
     - The password for all users is "12345678"
     - You can log in as any user from the seeders to access the app.
 
