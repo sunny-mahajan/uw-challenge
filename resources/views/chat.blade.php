@@ -1,41 +1,44 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="auto-delete-warning font-semibold text-xl text-gray-800 leading-tight">
-            <p>The chat messages will be automatically deleted once the recipient has seen the message or after 24 hours.</p>
+            <p>The chat messages will be automatically deleted once the recipient has seen the message or after 24
+                hours.</p>
         </h2>
     </x-slot>
 
-    <div id="chat-container" class=".bg-gray-100 font-sansbg-gray-100 font-sans">
-        <div class="max-w-3xl mx-auto p-4">
-            <!-- Display validation errors -->
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            <!-- Dropdown to select users -->
-            <form id="select-user-form">
-                <select id="recipient-select" name="recipient_id" class="py-2 px-4 focus:outline-none">
-                    <option value="">Select User</option>
+    <div class=".bg-gray-100 font-sansbg-gray-100 font-sans">
+        <div class="chat-container">
+            <!-- User List -->
+            <div class="user-list">
+                <h2 class="mb-4">Users</h2>
+                <ul class="users-to-chat">
                     @foreach ($users as $user)
-                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        <li class="user-to-chat" data-recipient-id="{{ $user->id }}" data-recipient-name="{{$user->name}}">{{ $user->name }}</li>
                     @endforeach
-                </select>
-            </form>
-
-            <!-- Chat Messages -->
-            <div id="chat-messages" class="bg-white rounded-lg shadow-lg overflow-y-auto max-h-96 mb-4">
+                </ul>
             </div>
-            <!-- End Chat Messages -->
 
+            <!-- Chat Window -->
+            <div class="chat-window">
+                <h2 class="mb-4 chat-with-user">Please select user to start chat</h2>
 
-            @include('chat-form')
+                <!-- Chat Messages -->
+                <div id="chat-messages" class="bg-white rounded-lg shadow-lg overflow-y-auto max-h-96 mb-4">
+                    <!-- Chat messages will be loaded here -->
+                </div>
+                <!-- End Chat Messages -->
 
-            <script src="{{ asset('js/chat.js') }}"></script>
+                <!-- Message Area -->
+                <div class="message-area">
+                    <input id="message-input" name="message" type="text" placeholder="Type your message..."
+                        class="py-2 px-4 focus:outline-none">
+                    <button id="send-message-btn" type="button">Send</button>
+                </div>
+                <!-- End Message Area -->
+            </div>
+            <!-- End Chat Window -->
         </div>
+
+        <script src="{{ asset('js/chat.js') }}"></script>
+    </div>
 </x-app-layout>

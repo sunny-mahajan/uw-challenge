@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Message;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class MessageRepository
 {
@@ -29,14 +30,29 @@ class MessageRepository
         $messagesData = Message::where(function ($query) use ($loggedInUserId, $recipientId) {
             $query->where('sender_id', $loggedInUserId)->where('recipient_id', $recipientId)
                 ->orWhere('sender_id', $recipientId)->where('recipient_id', $loggedInUserId);
-        })->where('recipient_read', 0)->whereNull('expire_at')
-            ->orderBy('created_at', 'asc')
+        })->orderBy('created_at', 'asc')
             ->get();
         $ids = [];
         foreach ($messagesData as $messageData) {
             $messageData->message = decrypt($messageData->message, $messageData->encryption_key);
             if ($loggedInUserId != $messageData->sender_id) {
                 $ids[] = $messageData->id;
+            }
+
+            // Given time string
+            $timeString = $messageData->created_at;
+
+            // Parse the time string into a Carbon instance
+            $carbonDate = Carbon::parse($timeString);
+
+            // Format the Carbon instance into the desired format
+            $formattedTime = $carbonDate->format("M d, Y - h:i a");
+
+            $messageData->createdAtFormatted = $formattedTime;
+
+            // show message as deleted if it's read by recipient or expired
+            if ($messageData->recipient_read == 1 || $messageData->expire_at != null) {
+                $messageData->message = "This message has been deleted.";
             }
         }
 

@@ -30,7 +30,7 @@
     min-width: 135px;
     border-radius: 10px;
 }
-#chat-container {
+.chat-container {
     padding: 50px;
 }
 #message-input {
@@ -38,4 +38,56 @@
 }
 .auto-delete-warning {
     color: #e2b500;
+}
+
+.chat-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+.user-list {
+    flex: 1;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    max-width: 250px;
+    overflow-y: auto;
+}
+
+.chat-window {
+    flex: 2;
+    padding: 20px;
+    max-width: 600px;
+}
+
+.message-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#message-input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#send-message-btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.user-to-chat {
+    cursor: pointer;
+}
+.user-to-chat.selected {
+    background: #b5f3b7;
+    border-radius: 10px;
+    padding: 5px;
 }
